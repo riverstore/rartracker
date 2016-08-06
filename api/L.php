@@ -12,7 +12,7 @@ class L {
 		if (!$language || ($language && !in_array($language, Config::$languages))) {
 			$language = self::$defaultLanguage;
 		}
-		if (!self::$cache[$language]) {
+		if (!isset(self::$cache[$language])) {
 			self::$cache[$language] = json_decode(file_get_contents("locales/" . $language . ".json"), true);
 		}
 		$sentence = self::$cache[$language][$string];
